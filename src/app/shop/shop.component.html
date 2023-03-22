@@ -1,0 +1,77 @@
+<div class="container">
+    <div class="row">
+        <section class="col-3">
+            <h5 class="text-warning ms-3">
+                Brands
+            </h5>
+            <select class="form-select mb-4" (change)="onSortSelected($event)">
+                <!--using angular for directive for looping through sort options to display
+                    value attribute data will be passed along with event-->
+                <option *ngFor="let sort of sortOptions" [value]="sort.value">
+                    {{sort.name}}
+                </option>
+            </select>
+            <h5 class="text-warning ms-3">
+                Brands
+            </h5>
+                <ul class="list-group my-3">
+                    <!--using angular for directive for looping through brands to display
+                    setting class with active if condition matches-->
+                    <li class="list-group-item" *ngFor="let brand of brands"
+                    [class.active]="brand.id===shopParams.brandId"
+                    [value]="brand.id"
+                    (click)="onBrandSlected(brand.id)"
+                    >{{brand.name}}</li>
+                  </ul>
+            <h5 class="text-warning ms-3">
+                    Types
+            </h5>
+                    <ul class="list-group my-3">
+                        <!--using angular for directive for looping through types to display
+                        setting class with active if condition matches-->
+                        <li class="list-group-item active" *ngFor="let type of types"
+                        [class.active]="type.id===shopParams.typeId"
+                        [value]="type.id"
+                        (click)="onTypeSlected(type.id)"
+                        >{{type.name}}</li>
+                      </ul>
+        </section>
+        <section class="col-9">
+            <div class="d-flex justify-content-between align-items-center pb-2">
+               
+                <!--Using paging-header shared component-->
+                <app-paging-header
+                [totalCount]="totalCount"
+                [pageNumber]="shopParams.pageNumber"
+                [pageSize]="shopParams.pageSize"
+                ></app-paging-header>
+
+                <div class="d-flex mt-2">
+                    <!--using template referrenc variable-->
+                    <!--using enter button-->
+                    <input (keyup.enter)="onSearch()" type="text" placeholder="Search" class="form-control me2" #search>
+                    <button (click)="onSearch()" class="btn-outline-primary mx-2">Search</button>
+                    <button (click)="onReset()" class="btn-outline-secondary">Reset</button>
+                </div>
+            </div>
+            <div class="row row-cols-3 g-3 mb-4">
+                 <!--using angular for directive with bootsrap-->
+                <div class="col" *ngFor="let product of products">
+                    <!--Passing data to child component
+                    we use [] if child component is receiving value
+                    we use paranthesis for sending output from child component
+                    -->
+                    <app-product-item [product]="product"></app-product-item>
+                </div>                   
+            </div>   
+            <div class="d-flex justify-content-center" *ngIf="totalCount>0">
+                <!--input and output from child component-->
+                <app-pager
+                [totalCount]="totalCount"
+                [pageSize]="shopParams.pageSize"
+                (pageChanged)="onPageChanged($event)"
+                ></app-pager>
+            </div>         
+        </section>
+    </div>
+</div>

@@ -1,0 +1,11 @@
+<!--using angular if directive to check if optional parameter is empty-->
+<pagination *ngIf="totalCount&&pageSize"
+                [boundaryLinks]="true" 
+                [totalItems]="totalCount"
+                [itemsPerPage]="pageSize"
+                [maxSize]="10"
+                (pageChanged)="onPagerChanged($event)"
+                previousText="&lsaquo;" 
+                nextText="&rsaquo;" 
+                firstText="&laquo;" 
+                lastText="&raquo;"> </pagination>
