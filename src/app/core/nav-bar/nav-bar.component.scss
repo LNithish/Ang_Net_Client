@@ -10,3 +10,14 @@
     top: -12px;
     right: 32px
 }
+a{
+    text-decoration: none;
+    color: blue;
+    &.active{
+        color: purple;
+    }
+}
+.logo{
+    //to change the mouse into hand while on logo
+    cursor: pointer;
+}

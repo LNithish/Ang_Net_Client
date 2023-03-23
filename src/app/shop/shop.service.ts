@@ -43,4 +43,9 @@ export class ShopService {
   {
     return this.http.get<Type[]>(this.baseurl+"products/types");
   }
+  //To get an individual product
+  getProduct(id:number)
+  {
+    return this.http.get<Product>(this.baseurl+'products/'+id);
+  }
 }
