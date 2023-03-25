@@ -6,5 +6,8 @@
 /* Importing Datepicker SCSS file. */
 @import "node_modules/ngx-bootstrap/datepicker/bs-datepicker";
 
-//I hav imported beloww css file manually to make font-awesome style available globally
+//I have imported beloww css file manually to make font-awesome style available globally
 @import "node_modules/font-awesome/css/font-awesome";
+
+//Adding below toastr style to make it available for globally
+@import "./../node_modules/ngx-toastr/toastr.css"

@@ -36,6 +36,13 @@
           },
           "configurations": {
             "production": {
+              //production environment file selection
+              "fileReplacements": [
+                {
+                  "replace": "src/environment/environment.ts",
+                  "with": "src/environment/environment.prod.ts"
+                }
+              ],
               "budgets": [
                 {
                   "type": "initial",
@@ -104,6 +111,8 @@
               "node_modules/ngx-bootstrap/datepicker/bs-datepicker.css",
               //Adding icon sets
               "node_modules/font-awesome/css/font-awesome.min.css",
+              //adding toast notification
+              "node_modules/ngx-toastr/toastr.css",
               "src/styles.scss"
             ],
             "scripts": []
