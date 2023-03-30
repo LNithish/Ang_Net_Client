@@ -7,7 +7,8 @@ import { HomeComponent } from './home/home.component';
 
 //route list goes in below array
 const routes: Routes = [
-  {path:"", component:HomeComponent},
+  //adding data for breadcrumb
+  {path:'', component:HomeComponent,data:{breadcrumb:'Home'}},
   {path:"test-error", component:TestErrorComponent},
   {path:"not-found",component:NotFoundComponent},
   {path:"server-error",component:ServerErrorComponent},

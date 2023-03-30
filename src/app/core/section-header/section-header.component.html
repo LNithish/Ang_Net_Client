@@ -1,0 +1,30 @@
+<!--using breadcrumbs observable to display the breadcrumb on condition basis-->
+<ng-container *ngIf="$any(bcService.breadcrumbs$ | async) as BCarray">
+  <!--condition to identify we are not in home page and excluding breadcrumb for home page-->
+  <!--section *ngIf="BCarray[BCarray.length-1].label!=='Home'" class="py-1 mb-1" style="margin-top: 105px; background-color: yellowgreen;"-->
+  <section class="py-1 mb-1" style="margin-top:105px; background-color: yellowgreen;">
+    <div class="container">
+    <div class="row d-flex align-items-center">
+    <div class="col-9">
+      <!--accessing current page name from the route using breadcrumb-->
+        <h1>{{BCarray[BCarray.length-1].label|titlecase}}</h1>
+    </div>
+    <div class="col-3">
+        <!--replacing following bootstrap breadcrumb with dynamic xng-breadcrumb
+            <nav>
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Library</li>
+            </ol>
+          </nav>-->
+          <xng-breadcrumb>
+            <ng-container *ngBreadcrumbItem="let breadcrumb">
+                <!--titlecase pipe is from angular-->
+                {{breadcrumb|titlecase}}
+            </ng-container>
+          </xng-breadcrumb>
+    </div>
+    </div>
+    </div>
+    </section>
+</ng-container>

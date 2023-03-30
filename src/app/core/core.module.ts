@@ -6,6 +6,9 @@ import { TestErrorComponent } from './test-error/test-error.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ServerErrorComponent } from './server-error/server-error.component';
 import { ToastrModule } from 'ngx-toastr';
+import { SectionHeaderComponent } from './section-header/section-header.component';
+import { BreadcrumbModule } from 'xng-breadcrumb';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 
 
@@ -15,7 +18,8 @@ import { ToastrModule } from 'ngx-toastr';
     NavBarComponent,
     TestErrorComponent,
     NotFoundComponent,
-    ServerErrorComponent
+    ServerErrorComponent,
+    SectionHeaderComponent
   ],
   imports: [
     CommonModule,
@@ -27,11 +31,18 @@ import { ToastrModule } from 'ngx-toastr';
       positionClass:'toast-bottom-center',
       //to avoid multiple notification for more than one error
       preventDuplicates:true
-    })
+    }),
+    //importing breadcrumb module to use it in sectionHeader component
+    BreadcrumbModule,
+    //importing ngx-spinner module
+    NgxSpinnerModule
   ],
   //we need to export components in order to use it in another module
   exports:[
-    NavBarComponent
+    NavBarComponent,
+    SectionHeaderComponent,
+    //exporting ngxspinner module as it will be used in app module
+    NgxSpinnerModule
   ]
 })
 export class CoreModule { }

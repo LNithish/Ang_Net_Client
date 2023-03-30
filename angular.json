@@ -109,10 +109,15 @@
               //importing boostrap css style in angular.json 
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "node_modules/ngx-bootstrap/datepicker/bs-datepicker.css",
+              //adding bootswatch below the (bootstrap.min.css,bs-datepicker.css), so that new theme from
+              //bootswatch will override style from the above two
+              "node_modules/bootswatch/dist/United/bootstrap.min.css",
               //Adding icon sets
               "node_modules/font-awesome/css/font-awesome.min.css",
               //adding toast notification
               "node_modules/ngx-toastr/toastr.css",
+              //adding loading animation style
+              "node_modules/ngx-spinner/animations/timer.css",
               "src/styles.scss"
             ],
             "scripts": []

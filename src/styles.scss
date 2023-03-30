@@ -1,13 +1,27 @@
 /* You can add global styles to this file, and also import other style files */
 
+//adding global style for breadcrumb
+label.xng-breadcrumb-trail{
+    color: red;
+}
+
 /* Importing Bootstrap SCSS file. */
 @import "./node_modules/bootstrap/scss/bootstrap";
 
 /* Importing Datepicker SCSS file. */
 @import "node_modules/ngx-bootstrap/datepicker/bs-datepicker";
 
-//I have imported beloww css file manually to make font-awesome style available globally
+//Adding the following three imports for applying the bootswatch theme
+//need to be imported below the bootstrap and datepicker to override them
+@import "node_modules/bootswatch/dist/United/_variables";
+@import "node_modules/bootswatch/dist/United/bootstrap";
+@import "node_modules/bootswatch/dist/United/_bootswatch";
+
+//I have imported below css file manually to make font-awesome style available globally
 @import "node_modules/font-awesome/css/font-awesome";
 
 //Adding below toastr style to make it available for globally
-@import "./../node_modules/ngx-toastr/toastr.css"
+@import "./../node_modules/ngx-toastr/toastr.css";
+
+//Adding below spiner for loading animation and make it available for globally
+@import "./../node_modules/ngx-spinner/animations/timer.css"

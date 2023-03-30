@@ -7,7 +7,8 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
 //Lazy loading(adding routing in specific modules)
 const routes:Routes=[
   {path:"", component:ShopComponent},
-  {path:":id", component:ProductDetailsComponent}
+  //creating alias for ProductDetailsComponent to use in breadcrumb 
+  {path:":id", component:ProductDetailsComponent,data:{breadcrumb:{alias:'productDetails'}}}
 ]
 
 @NgModule({

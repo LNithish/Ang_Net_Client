@@ -9,6 +9,7 @@ import { CoreModule } from './core/core.module';
 import { ShopModule } from './shop/shop.module';
 import { HomeModule } from './home/home.module';
 import { ErrorInterceptor } from './core/interceptors/error.interceptor';
+import { LoadingInterceptor } from './core/interceptors/loading.interceptor';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,9 @@ import { ErrorInterceptor } from './core/interceptors/error.interceptor';
   //Interceptor has to be added in provider
   providers: [
     //angulare comes with bunch of interceptors to add ours use multi
-   {provide:HTTP_INTERCEPTORS,useClass:ErrorInterceptor,multi:true}
+   {provide:HTTP_INTERCEPTORS,useClass:ErrorInterceptor,multi:true},
+   //adding loading interceptor
+   {provide:HTTP_INTERCEPTORS,useClass:LoadingInterceptor,multi:true}
   ],
   //During angular app starts below component will be started/bootstraped
   bootstrap: [AppComponent]
