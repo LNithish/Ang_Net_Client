@@ -17,6 +17,10 @@ const routes: Routes = [
   //{path:"shop/:id", component:ProductDetailsComponent},
   //using shop routing module
   {path:'shop',loadChildren:()=>import('./shop/shop.module').then(m=>m.ShopModule)},
+  //Using basket routing module(Lazy loading)
+  {path:'basket',loadChildren:()=>import('./basket/basket.module').then(m=>m.BasketModule)},
+  //using checkout routing module
+  {path:'checkout',loadChildren:()=>import('./checkout/checkout.module').then(m=>m.CheckoutModule)},
   //for route that doesn't exist
   {path:"**", redirectTo:'', pathMatch:'full'}
 ];

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Product } from './shared/models/product';
 import { Pagination } from './shared/models/pagination';
+import { BasketService } from './basket/basket.service';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +14,8 @@ export class AppComponent implements OnInit{
   title = 'NKL';
   //when strict mode is enabled every property will give an error if it's vale not defined or initialized
   products:Product[]=[];
-  constructor(private http:HttpClient)
+  //Injecting basket service to get the basket data of user during app start
+  constructor(private http:HttpClient,private basketService:BasketService)
   {
   }
   ngOnInit(): void {
@@ -30,5 +32,11 @@ export class AppComponent implements OnInit{
         console.log("Code works perfectly")
       }
     })
+
+    //Get Basket Data
+    const basketId=localStorage.getItem('basket_id');
+    if(basketId){
+      this.basketService.getBasket(basketId);
+    }
   }
 }

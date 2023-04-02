@@ -13,10 +13,14 @@ bg-white border-bottom fixed-top shadow-sm">
       </nav>
       <div class="d-flex align-items-center">
         <!--position relative class needed to put the cart number correctly-->
-        <a class="position-relative">
+        <!--Using roterlink to navigate to basket component-->
+        <a routerLink="/basket" class="position-relative">
             <!--fa styling is from font-awesome, it is imported globally in styles.css-->
             <i class="fa fa-shopping-cart fa-2x me-5 text-dark"></i>
-            <div class="cart-no">10</div>
+            <!--Using basket observale and async pipe-->
+            <div *ngIf="(basketService.basketSource$ | async) as basket" class="cart-no">
+              {{getCount(basket.items)}}
+            </div>
         </a>
         <a href="" class="btn btn-outline-secondary me-2">Login</a>
         <a href="" class="btn btn-outline-secondary me-3">Sign up</a>
