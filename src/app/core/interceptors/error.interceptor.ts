@@ -30,6 +30,7 @@ export class ErrorInterceptor implements HttpInterceptor {
             //validation error, errors should match API error response
             if(error.error.errors)
             {
+              //It throws the error object to component and componenet will mak use of that object
               this.toastr.error(error.error.errorMessage,error.status.toString())
               //bloww code lets display the error component details
               throw error.error;

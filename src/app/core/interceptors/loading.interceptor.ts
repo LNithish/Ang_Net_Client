@@ -15,10 +15,14 @@ export class LoadingInterceptor implements HttpInterceptor {
   constructor(private busyService:BusyService) {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
+    
+    //to avoid loading animation during async operation(Like checking email is in use while typing)
+    if(!request.url.includes('emailExists')){
     this.busyService.busy();
+    }
     //using pipe to utilize rxjs operator
     return next.handle(request).pipe(
-      delay(1000),
+      delay(500),
       //executes finally once the API request is completed
       finalize(()=>this.busyService.idle())
     );    

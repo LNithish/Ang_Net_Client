@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AccountService } from 'src/app/account/account.service';
 import { BasketService } from 'src/app/basket/basket.service';
 import { BasketItem } from 'src/app/shared/models/basket';
 
@@ -10,7 +11,8 @@ import { BasketItem } from 'src/app/shared/models/basket';
 export class NavBarComponent {
 
   //to use async pipe in template we need public service
-  constructor(public basketService:BasketService) {}
+  //adding public accountservice to use the observable in it
+  constructor(public basketService:BasketService,public accountService:AccountService) {}
 
   //total number of quantity in the cart
   getCount(items:BasketItem[]){

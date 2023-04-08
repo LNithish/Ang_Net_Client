@@ -1,0 +1,20 @@
+<div class="d-flex justify-content-center mt-5">
+    <div class="col-3">
+        <!--[formGroup] to mention it is a reactive form, (ngSubmit) is for submitting form-->
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <div class="text-center mb-4">
+                <h1 class="mb-3">Login</h1>
+            </div>
+            <!--"''" is to pass the value as a string-->
+            <app-text-input [formControl]="loginForm.controls['email']" [label]="'Email Address'"></app-text-input>
+            <!--passing input for label,formcontrol and type to text-input component-->
+            <app-text-input [formControl]="loginForm.controls['password']"  [label]="'password'" 
+            [type]="'password'"></app-text-input>
+             
+              <div class="d-grid">
+                <button [disabled]="loginForm.invalid"
+                 class="btn btn-lg btn-primary mt-3" type="submit">Sign In</button>
+              </div>
+        </form>
+    </div>
+</div>

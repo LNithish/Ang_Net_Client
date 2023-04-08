@@ -6,12 +6,16 @@ import { PagingHeaderComponent } from './paging-header/paging-header.component';
 import { PagerComponent } from './pager/pager.component';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { OrderTotalsComponent } from './order-totals/order-totals.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { TextInputComponent } from './text-input/text-input.component';
 
 @NgModule({
   declarations: [
     PagingHeaderComponent,
     PagerComponent,
-    OrderTotalsComponent
+    OrderTotalsComponent,
+    TextInputComponent
   ],
   imports: [
     CommonModule,
@@ -19,7 +23,12 @@ import { OrderTotalsComponent } from './order-totals/order-totals.component';
     //so the same instance will be used throughout the application, angular will not create second instance
     PaginationModule.forRoot(),
     //adding Carousel modul for image slider for home page
-    CarouselModule.forRoot()
+    CarouselModule.forRoot(),
+    //adding reactive form module in shared module so that it will be accessible in account module when lazy loaded
+    //if we add it in app module during lazy loading it will be not accessibl in account module
+    ReactiveFormsModule,
+    //adding dropdowwn module in shared module, it will be used in navbar
+    BsDropdownModule.forRoot()
   ],
   //we need to export the shared paginationmodule in order to use it in another module
   exports:[
@@ -30,7 +39,13 @@ import { OrderTotalsComponent } from './order-totals/order-totals.component';
     //exporting carousel module to use in home component
     CarouselModule,
     //exporting order-total module to use in basket and order summary page
-    OrderTotalsComponent
+    OrderTotalsComponent,
+    //exporting reactive form module to use in account module
+    ReactiveFormsModule,
+    //exporting dropdown module to use in nav bar
+    BsDropdownModule,
+    //exporting text-input component to use in login form validation
+    TextInputComponent
   ]
 })
 export class SharedModule { }

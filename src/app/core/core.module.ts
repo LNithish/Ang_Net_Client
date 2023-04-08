@@ -9,6 +9,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { SectionHeaderComponent } from './section-header/section-header.component';
 import { BreadcrumbModule } from 'xng-breadcrumb';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { SharedModule } from '../shared/shared.module';
 
 
 
@@ -35,7 +36,9 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     //importing breadcrumb module to use it in sectionHeader component
     BreadcrumbModule,
     //importing ngx-spinner module
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    //importing shared module to use drop down from it in nav bar
+    SharedModule
   ],
   //we need to export components in order to use it in another module
   exports:[
