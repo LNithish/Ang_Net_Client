@@ -11,11 +11,14 @@ export class BasketComponent {
 
   constructor(public basketService:BasketService){}
   //add or remove quantity from the basket
+  //the values are coming from basket-summary shared component
   increamentQuantity(item:BasketItem){
     this.basketService.addItemToBasket(item);
   }
-  removeItem(id:number,quantity:number)
+  //to handle the event emitted from basket-summary component
+  //removeItem(id:number,quantity:number)
+  removeItem(event:{id:number,quantity:number})
   {
-    this.basketService.removeItemFromBasket(id,quantity);
+    this.basketService.removeItemFromBasket(event.id,event.quantity);
   }
 }

@@ -9,13 +9,20 @@ import { OrderTotalsComponent } from './order-totals/order-totals.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TextInputComponent } from './text-input/text-input.component';
+import { StepperComponent } from './stepper/stepper.component';
+//adding cdkstepper module from angular material
+import {CdkStepperModule} from '@angular/cdk/stepper';
+import { BasketSummaryComponent } from './basket-summary/basket-summary.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
     PagingHeaderComponent,
     PagerComponent,
     OrderTotalsComponent,
-    TextInputComponent
+    TextInputComponent,
+    StepperComponent,
+    BasketSummaryComponent
   ],
   imports: [
     CommonModule,
@@ -28,7 +35,11 @@ import { TextInputComponent } from './text-input/text-input.component';
     //if we add it in app module during lazy loading it will be not accessibl in account module
     ReactiveFormsModule,
     //adding dropdowwn module in shared module, it will be used in navbar
-    BsDropdownModule.forRoot()
+    BsDropdownModule.forRoot(),
+    //adding stepper module in sharedmodule, It will be used stepper component
+    CdkStepperModule,
+    //adding the router module to use router link
+    RouterModule
   ],
   //we need to export the shared paginationmodule in order to use it in another module
   exports:[
@@ -45,7 +56,12 @@ import { TextInputComponent } from './text-input/text-input.component';
     //exporting dropdown module to use in nav bar
     BsDropdownModule,
     //exporting text-input component to use in login form validation
-    TextInputComponent
+    TextInputComponent,
+    //exporting stepper component to use in checkout module
+    StepperComponent,
+    CdkStepperModule,
+    //exporting basket-summary shared component to use it in basket component
+    BasketSummaryComponent
   ]
 })
 export class SharedModule { }

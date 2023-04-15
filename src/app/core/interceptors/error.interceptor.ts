@@ -44,7 +44,7 @@ export class ErrorInterceptor implements HttpInterceptor {
           if(error.status===401)
           {
             //varaiable name errorMessage below should be match from API
-            this.toastr.error(error.error.message,error.status.toString())
+            this.toastr.error(error.error.errorMessage,error.status.toString())
           }
           if(error.status===404)
           {

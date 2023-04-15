@@ -4,6 +4,7 @@ import { environment } from 'src/environments/environment';
 import { Basket, BasketItem, BasketTotals } from '../shared/models/basket';
 import { HttpClient } from '@angular/common/http';
 import { Product } from '../shared/models/product';
+import { DeliveryMethod } from '../shared/models/deliveryMethod';
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +22,15 @@ basketSource$=this.basketSource.asObservable();
 private basketTotalSource =new BehaviorSubject<BasketTotals|null>(null);
 basketTotalSource$=this.basketTotalSource.asObservable();
 
+//adding property to calculate totals based on the shipping selected
+shipping=0;
+
   constructor(private http:HttpClient) { }
+
+  setShippingPrice(deliveryMethod:DeliveryMethod){
+    this.shipping=deliveryMethod.price;
+    this.calculateTotals();
+  }
 
   getBasket(id:string)
   {
@@ -130,16 +139,23 @@ basketTotalSource$=this.basketTotalSource.asObservable();
 private calculateTotals() {
   const basket=this.getCurrentBasketValue();
   if(!basket) return;
-  const shipping=0;
   const subtotal=basket.items.reduce((a,b)=>(b.price*b.quantity)+a,0);
-  const total=shipping+subtotal;
-  this.basketTotalSource.next({shipping,total,subtotal});
+  const total=this.shipping+subtotal;
+  this.basketTotalSource.next({shipping:this.shipping,total,subtotal});
 }
 
 //TypeGuard
 //checking if item received is product or basketItem
 private isProduct(item:Product|BasketItem):item is Product{
   return (item as Product).productBrand!==undefined;
+}
+
+
+//delete basket locally once order is created
+deleteLocalBasket(){
+  this.basketSource.next(null);
+  this.basketTotalSource.next(null);
+  localStorage.removeItem('basket_id');
 }
 
 }

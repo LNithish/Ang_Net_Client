@@ -1,0 +1,23 @@
+<div class="container">
+    <ul class="nav nav-pills nav-justified">
+        <!--steps is from CdkStepper component class-->
+        <li class="nav-item" *ngFor="let step of steps; let i=index">
+            <div class="d-grid">
+                <!--button for each steps-->
+            <button
+            (click)="onClick(i)"
+            [class.active]="selectedIndex===i"
+             class="nav-link py-3 text-uppercase fw-bold">
+                {{step.label}}
+            </button>
+            </div>
+        </li>
+    </ul>
+    <!--step content,ngTemplateOutlet is from CdkStepper component, 
+        selected should not be null as per angular strict mode so using ngIf-->
+    <div *ngIf="selected">
+        <ng-container [ngTemplateOutlet]="selected.content">
+
+        </ng-container>
+    </div>
+</div>
