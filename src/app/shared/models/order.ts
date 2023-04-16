@@ -21,7 +21,7 @@ export interface Order{
     deliveryMethod:string;
     shippingPrice:number;
     orderItems:OrderItem[];
-    subtotal:number;
+    subTotal:number;
     total:number;
     status:string;
 }

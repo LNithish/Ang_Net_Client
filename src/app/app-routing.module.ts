@@ -28,6 +28,10 @@ const routes: Routes = [
   loadChildren:()=>import('./checkout/checkout.module').then(m=>m.CheckoutModule)},
    //Using account routing module(Lazy loading)
    {path:'account',loadChildren:()=>import('./account/account.module').then(m=>m.AccountModule)},
+   //using order routing module
+  {path:'order',
+  canActivate:[AuthGuard],
+  loadChildren:()=>import('./order/order.module').then(m=>m.OrderModule)},
   //for route that doesn't exist
   {path:"**", redirectTo:'', pathMatch:'full'}
 ];
