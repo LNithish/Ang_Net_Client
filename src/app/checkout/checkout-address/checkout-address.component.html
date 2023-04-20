@@ -39,8 +39,9 @@
     <button class="btn btn-outline-primary" routerLink="/basket">
         <i class="fa fa-angle-left"></i>Back to basket
     </button>
-    <!--using cdkstepper option as we are inside cdk-step-->
-    <button class="btn btn-primary" cdkStepperNext>
+    <!--using cdkstepper option as we are inside cdk-step
+    disabling button if form is not filled correctly-->
+    <button [disabled]="checkoutForm?.get('addressForm')?.invalid" class="btn btn-primary" cdkStepperNext>
         Go to Delivery<i class="fa fa-angle-right"></i>
     </button>
 </div>

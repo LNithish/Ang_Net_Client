@@ -17,9 +17,19 @@ export class LoadingInterceptor implements HttpInterceptor {
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     
     //to avoid loading animation during async operation(Like checking email is in use while typing)
-    if(!request.url.includes('emailExists')){
-    this.busyService.busy();
+    // if(!request.url.includes('emailExists')){
+    // this.busyService.busy();
+    // }
+
+    //To stop page loading during async email check and order creation
+    if(
+      request.url.includes('emailExists')||
+      request.method==='POST'&&request.url.includes('orders')
+    ){
+      return next.handle(request);
     }
+    //turning on spinner for other page loads
+    this.busyService.busy();
     //using pipe to utilize rxjs operator
     return next.handle(request).pipe(
       delay(500),

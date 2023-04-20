@@ -3,4 +3,10 @@ button.nav-link {
     border-radius: 0;
     border: none;
     color: #333;
+
+    //property to check if button is disabled and to apply style if it disabled
+    &:disabled:not(.active){
+        color: #333;
+        background: #e9ecef;
+    }
 }

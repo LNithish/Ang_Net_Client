@@ -3,6 +3,12 @@ import * as cuid from "cuid"
 export interface Basket {
     id: string
     items: BasketItem[]
+    //To persist deliverymethod in checkout and for adding paymentIntent for payment
+    clientSecret?:string;
+    paymentIntentId?:string;
+    deliveryMethodId?:number;
+    //to persist Shipping price in basket adding a field
+    shippingPrice:number;
   }
   
   export interface BasketItem {
@@ -18,7 +24,8 @@ export interface Basket {
   //craeting a class for basket as the cleint need to add the basketID when the instance is created
   export class Basket implements Basket{
     id=cuid();
-    items: BasketItem[]=[]
+    items: BasketItem[]=[];
+    shippingPrice=0;
   }
 
 //Basket total interface

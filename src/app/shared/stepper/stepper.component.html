@@ -3,9 +3,10 @@
         <!--steps is from CdkStepper component class-->
         <li class="nav-item" *ngFor="let step of steps; let i=index">
             <div class="d-grid">
-                <!--button for each steps-->
+                <!--button for each steps, disabled header click option-->
             <button
             (click)="onClick(i)"
+            [disabled]="true"
             [class.active]="selectedIndex===i"
              class="nav-link py-3 text-uppercase fw-bold">
                 {{step.label}}
