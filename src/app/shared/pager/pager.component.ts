@@ -10,6 +10,10 @@ export class PagerComponent {
 @Input() pageSize?: number;
 //to pass value to the parent component , we have to utilize output property
 @Output() pageChanged = new EventEmitter<number>();
+
+//adding input property to pass page number
+@Input() pageNumber?:number;
+
 onPagerChanged(event:any)
 {
   //emitting number of the page
